@@ -1,0 +1,6 @@
+-   id: shell-fmt
+    name: shfmt
+    description: Rewrites all shell scripts to a canonical format.
+    entry: shfmt.sh
+    language: script
+    files: \.sh$
