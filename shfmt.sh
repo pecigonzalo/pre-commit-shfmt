@@ -8,15 +8,17 @@ set -o pipefail # capture fail exit codes in piped commands
 indentation=""
 
 while [[ $# -gt 0 ]] && [[ ."$1" = .-*  || ."$1" = .--* ]]; do
-    opt=$1
+    # Get param and value using parameter expansion, splitting on = or " "
+    param="${1%[ =]*}"
+    value="${1#*[ =]}"
     shift
-    case "$opt" in
+    case "$param" in
         -i | --indent)
-            indentation="-i $1"
+            indentation="-i $value"
             ;;
         -*)
-            echo "Error: Unknown option: $1" >&2
-            return
+            echo "Error: Unknown option: $param" >&2
+            exit 1
             ;;
         *)  # No more options
             break 2

@@ -3,5 +3,3 @@
     description: Rewrites all shell scripts to a canonical format.
     entry: shfmt.sh
     language: script
-    args:
-      - --indent=4
