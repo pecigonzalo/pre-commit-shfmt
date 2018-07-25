@@ -6,6 +6,7 @@ set -o pipefail # capture fail exit codes in piped commands
 # set -x          # execution tracing debug messages
 
 indentation=""
+diff=""
 
 while [[ $# -gt 0 ]] && [[ ."$1" = .-*  || ."$1" = .--* ]]; do
     # Get param and value using parameter expansion, splitting on = or " "
@@ -15,6 +16,9 @@ while [[ $# -gt 0 ]] && [[ ."$1" = .-*  || ."$1" = .--* ]]; do
     case "$param" in
         -i | --indent)
             indentation="-i $value"
+            ;;
+        -d)
+            diff="-d"
             ;;
         -*)
             echo "Error: Unknown option: $param" >&2
@@ -28,6 +32,6 @@ done
 
 for file in "$@"; do
     if file "$file" | grep -Pi 'shell script' > /dev/null; then
-        shfmt -l -w $indentation "$file"
+        shfmt -l -w $indentation $diff "$file"
     fi
 done
