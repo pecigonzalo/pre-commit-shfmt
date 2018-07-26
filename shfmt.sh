@@ -7,6 +7,7 @@ set -o pipefail # capture fail exit codes in piped commands
 
 indentation=""
 diff=""
+ret=0
 
 while [[ $# -gt 0 ]] && [[ ."$1" = .-*  || ."$1" = .--* ]]; do
     # Get param and value using parameter expansion, splitting on = or " "
@@ -32,6 +33,7 @@ done
 
 for file in "$@"; do
     if file "$file" | grep -Pi 'shell script' > /dev/null; then
-        shfmt -l -w $indentation $diff "$file"
+        shfmt -l -w $indentation $diff "$file" || ret=$?
     fi
 done
+exit $ret
