@@ -7,10 +7,10 @@ An example `.pre-commit-config.yaml`:
 
 ```yaml
 - repo: https://github.com/fauust/pre-commit-fmt
-  sha: master
+  rev: master
   hooks:
     -   id: shell-fmt
-        args: ['--indent=4']
+        args: ['-d', '-i', '2']
 ```
 
 Enjoy the clean code!
