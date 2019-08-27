@@ -10,8 +10,8 @@ An example `.pre-commit-config.yaml`:
 - repo: https://github.com/fauust/pre-commit-fmt
   rev: master
   hooks:
-    -   id: shell-fmt
-        args: ['-d', '-i', '2']
+    - id: shell-fmt
+      args: ['-d', '-i', '2']
 ```
 
 Enjoy the clean code!
