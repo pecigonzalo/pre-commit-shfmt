@@ -14,4 +14,6 @@ An example `.pre-commit-config.yaml`:
       args: ['-d', '-i', '2']
 ```
 
+The **[shfmt](https://github.com/mvdan/sh)** tool must installed separately.
+
 Enjoy the clean code!
