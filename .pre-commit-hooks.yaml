@@ -1,6 +1,7 @@
--   id: shell-fmt
-    name: shfmt
-    description: Check shell style with shfmt
-    entry: shfmt.sh
-    language: script
-    types: [shell]
+---
+- id: shell-fmt
+  name: Check shell style (shfmt)
+  description: Check shell style with shfmt
+  entry: shfmt.sh
+  language: script
+  types: [shell]
