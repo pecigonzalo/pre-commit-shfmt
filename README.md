@@ -6,7 +6,7 @@ Single [pre-commit](http://pre-commit.com/) hook which runs **[shfmt](https://gi
 An example `.pre-commit-config.yaml`:
 
 ```yaml
--   repo: git://github.com/pecigonzalo/pre-commit-fmt
+-   repo: git://github.com/pecigonzalo/pre-commit-shfmt
     sha: master
     hooks:
       -   id: shell-fmt
