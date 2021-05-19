@@ -6,8 +6,9 @@ set -o pipefail # capture fail exit codes in piped commands
 # set -x          # execution tracing debug messages
 
 indentation=""
+args=""
 
-while [[ $# -gt 0 ]] && [[ ."$1" = .-*  || ."$1" = .--* ]]; do
+while [[ $# -gt 0 ]] && [[ ."$1" == .-* || ."$1" == .--* ]]; do
     # Get param and value using parameter expansion, splitting on = or " "
     param="${1%[ =]*}"
     value="${1#*[ =]}"
@@ -16,18 +17,24 @@ while [[ $# -gt 0 ]] && [[ ."$1" = .-*  || ."$1" = .--* ]]; do
         -i | --indent)
             indentation="-i $value"
             ;;
+        -ci | --case-indent)
+            args+=" -ci"
+            ;;
+        -s | --simplify)
+            args+=" -s"
+            ;;
         -*)
             echo "Error: Unknown option: $param" >&2
             exit 1
             ;;
-        *)  # No more options
+        *) # No more options
             break 2
             ;;
     esac
 done
 
 for file in "$@"; do
-    if file "$file" | grep -Pi 'shell script' > /dev/null; then
-        shfmt -l -w $indentation "$file"
+    if file "$file" | grep -Pi 'shell script' >/dev/null; then
+        shfmt -l -w $indentation $args "$file"
     fi
 done
