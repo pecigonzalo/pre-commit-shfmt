@@ -7,27 +7,27 @@ set -o pipefail # capture fail exit codes in piped commands
 
 indentation=""
 
-while [[ $# -gt 0 ]] && [[ ."$1" = .-*  || ."$1" = .--* ]]; do
-    # Get param and value using parameter expansion, splitting on = or " "
-    param="${1%[ =]*}"
-    value="${1#*[ =]}"
-    shift
-    case "$param" in
-        -i | --indent)
-            indentation="-i $value"
-            ;;
-        -*)
-            echo "Error: Unknown option: $param" >&2
-            exit 1
-            ;;
-        *)  # No more options
-            break 2
-            ;;
-    esac
+while [[ $# -gt 0 ]] && [[ ."$1" == .-* || ."$1" == .--* ]]; do
+  # Get param and value using parameter expansion, splitting on = or " "
+  param="${1%[ =]*}"
+  value="${1#*[ =]}"
+  shift
+  case "$param" in
+  -i | --indent)
+    indentation="-i $value"
+    ;;
+  -*)
+    echo "Error: Unknown option: $param" >&2
+    exit 1
+    ;;
+  *) # No more options
+    break 2
+    ;;
+  esac
 done
 
 for file in "$@"; do
-    if file "$file" | grep -Pi 'shell script' > /dev/null; then
-        shfmt -l -w $indentation "$file"
-    fi
+  if file "$file" | grep -Pi 'shell script' >/dev/null; then
+    shfmt -l -w $indentation "$file"
+  fi
 done
