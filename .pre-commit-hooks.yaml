@@ -1,7 +1,16 @@
 - id: shell-fmt
   name: shfmt
   description: Rewrites all shell scripts to a canonical format.
-  entry: shfmt.sh
-  language: script
+  entry: shfmt
+  language: system
+  types:
+    - file
+    - shell
+  exclude_types:
+    - zsh
   args:
-    - -i 2
+    - -w
+    - -s
+    - -l
+    - -i
+    - "4"

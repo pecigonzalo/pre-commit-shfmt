@@ -11,7 +11,8 @@ An example `.pre-commit-config.yaml`:
   hooks:
     - id: shell-fmt
       args:
-        - -i 2
+        - -i
+        - "2"
 ```
 
 Enjoy the clean code!
