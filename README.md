@@ -1,9 +1,8 @@
 # pre-commit-shfmt hook
 
-Single [pre-commit](http://pre-commit.com/) hook which runs **[shfmt](https://github.com/mvdan/sh)** on shell script files.
+[pre-commit](http://pre-commit.com/) hook which runs **[shfmt](https://github.com/mvdan/sh)** on shell script files.
 
-
-An example `.pre-commit-config.yaml`:
+Example `.pre-commit-config.yaml`:
 
 ```yaml
 - repo: https://github.com/pecigonzalo/pre-commit-shfmt
@@ -16,3 +15,11 @@ An example `.pre-commit-config.yaml`:
 ```
 
 Enjoy the clean code!
+
+## Variations
+
+This pre-commit provides 3 variations of the `shfmt` hook.
+
+- `id: shell-fmt`: Uses the system provided `shfmt` binary.
+- `id: shell-fmt-docker`: Uses a docker image `shfmt` container.
+- `id: shell-fmt-go`: USes a Go install `shfmt` package.
