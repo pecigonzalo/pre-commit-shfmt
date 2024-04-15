@@ -37,7 +37,7 @@
   description: Rewrites all shell scripts to a canonical format.
   language: golang
   additional_dependencies:
-    - mvdan.cc/sh/v3/cmd/shfmt@v3.5.1
+    - mvdan.cc/sh/v3/cmd/shfmt@v3.8.0
   entry: shfmt
   types:
     - file
